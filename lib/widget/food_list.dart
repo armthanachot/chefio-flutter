@@ -27,7 +27,8 @@ class FoodList extends StatelessWidget {
             children: [
               Container(
                   padding: EdgeInsets.only(right: 10),
-                  child: CircleAvatar(
+                  child: 
+                  CircleAvatar(
                     radius: 20,
                     backgroundColor: Colors.grey,
                     backgroundImage: NetworkImage(ownerProfile),
@@ -50,7 +51,7 @@ class FoodList extends StatelessWidget {
               borderRadius: BorderRadius.circular(40),
               child: Image(
                 image: NetworkImage(image),
-                fit: BoxFit.cover,
+                fit: BoxFit.cover, // ทำให้ไม่มีขอบรูปที่เกิน ให้รูปขยายเต็มขอบ
                 width: 400,
                 height: 200,
               ),
