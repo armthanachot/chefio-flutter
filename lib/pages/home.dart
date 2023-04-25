@@ -1,4 +1,6 @@
 import 'package:checfio_flutter/mock/food_list_mock.dart';
+import 'package:checfio_flutter/mock/home_bottom_menu.dart';
+import 'package:checfio_flutter/widget/bottombar.dart';
 import 'package:checfio_flutter/widget/food_list.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +14,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var foods = FoodMock().foods;
   List<Map<String, dynamic>> filteredFoodList = FoodMock().foods;
-  String searchValue = "";
   @override
   void initState() {
     filteredFoodList =
-        foods; // Initialize the filteredFoodList list to contain all items
+        foods; // Initialize the filteredFoodList list to contain all items initial ก่อน เพราะ ListView จะเอาไปใช้ อาจจะเกิดการ render ไม่ทัน
     super.initState();
   }
 
@@ -44,8 +45,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontSize: 20),
           onChanged: (value) {
             setState(() {
-              searchValue = value;
-              filterFoods(searchValue);
+              filterFoods(value);
             });
           },
         ),
@@ -67,6 +67,8 @@ class _HomePageState extends State<HomePage> {
                   ],
                 );
               })),
+      bottomNavigationBar: BottomBar(
+        menus: HomeBottomMenu().menus),
     );
   }
 
