@@ -14,6 +14,31 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
+  void _showMenu(BuildContext context) async {
+    final result = await showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(0, 50, 0, 0),
+      items: <PopupMenuEntry>[
+        PopupMenuItem<String>(
+          value: 'item1',
+          child: Text('Item 1'),
+        ),
+        PopupMenuItem<String>(
+          value: 'item2',
+          child: Text('Item 2'),
+        ),
+        PopupMenuItem<String>(
+          value: 'item3',
+          child: Text('Item 3'),
+        ),
+      ],
+    );
+
+    if (result != null) {
+      // Handle menu item selection here
+    }
+  }
+
   List<Widget> _pages = [
     HomePage(),
     NotificationPage(),
@@ -29,7 +54,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     void _onItemTapped(int index) async {
-      if (index != 0) {
+      if (index != 0 && index != 4) {
         await showBottomSheet(
             context: context,
             builder: (BuildContext context) {
@@ -56,6 +81,9 @@ class _BottomBarState extends State<BottomBar> {
           // เมื่อกดปิดแล้วค่อย set state เป็น 0 ทำให้มัน rebuild และ active ที่ index 0
           _selectedIndex = 0;
         });
+      } else if (_selectedIndex == 4) {
+        _showMenu(context);
+        _selectedIndex = index;
       } else {
         setState(() {
           _selectedIndex = index;

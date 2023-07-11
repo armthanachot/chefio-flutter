@@ -38,5 +38,14 @@ class HomeBottomMenu {
       ),
       label: 'Profile',
     ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.more_vert, color: Colors.grey, size: 30),
+      activeIcon: Icon(
+        Icons.more_vert,
+        color: Colors.green,
+        size: 30,
+      ),
+      label: 'More',
+    ),
   ];
 }

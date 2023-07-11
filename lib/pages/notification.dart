@@ -29,7 +29,7 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Notification"),
+      appBar: CustomAppBar(title: "Notification ----"),
       body: ListView(
         children: [
           Container(

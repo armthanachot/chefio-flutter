@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
         child: TextField(
           decoration: InputDecoration(
             hintText: "Search",
+            border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(horizontal: 16),
           ),
           cursorWidth:
@@ -67,8 +68,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 );
               })),
-      bottomNavigationBar: BottomBar(
-        menus: HomeBottomMenu().menus),
+      bottomNavigationBar: BottomBar(menus: HomeBottomMenu().menus),
     );
   }
 

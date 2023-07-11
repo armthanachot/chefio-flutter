@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
             appBar: CustomAppBar(title: "Chefio"),
-            body: const LoginPage()));
+            body: const LoginPage()),
+            );
   }
 }

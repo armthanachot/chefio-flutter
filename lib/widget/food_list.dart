@@ -27,8 +27,7 @@ class FoodList extends StatelessWidget {
             children: [
               Container(
                   padding: EdgeInsets.only(right: 10),
-                  child: 
-                  CircleAvatar(
+                  child: CircleAvatar(
                     radius: 20,
                     backgroundColor: Colors.grey,
                     backgroundImage: NetworkImage(ownerProfile),
@@ -37,6 +36,7 @@ class FoodList extends StatelessWidget {
                 child: Text(
                   ownerName,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  
                 ),
                 onTap: () {},
               )
@@ -70,25 +70,38 @@ class FoodList extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return Dialog(
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '$title Receipt',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                        child: Stack( //เพราะจะวาด icon บน dialog
+                          children: [
+                            SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '$title Receipt',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(height: 16.0),
+                                    Text(
+                                      '$receipt',
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(height: 16.0),
-                                Text(
-                                  '$receipt',
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
+                            Positioned(
+                              right: 0,
+                              child: IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  Navigator.of(context).pop(); // เหมือนเป็นการย้อน route ไป ก่อนหน้า
+                                },
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     })
